@@ -47,6 +47,17 @@ Cb:
     .word 3
     .word 4
 
+/* --- variable in matrix D --- */
+    .size Da, 8
+Da:
+    .word 0
+    .word 0
+
+    .size Db, 8
+Db:
+    .word 0
+    .word 0
+
 /* ========================= */
 /*       TEXT section        */
 /* ========================= */
@@ -67,11 +78,13 @@ Cb:
     .word Ca
     .word Cb
 
+.matricD:
+	.word Da
+	.word Db
 
 main:
     /*matrixA first row mul matrixB first column */
     /*And store in r7*/
-	MOV r0 ,#0
     LDR r1, .matrixA
     LDR r2, .matrixB
     MOV r6, #0
@@ -145,33 +158,33 @@ main:
     /*matrixC + matrixA mul matrixB */
 
     LDR r3, .matrixC
-
+	LDR r1, .matricD
     @ r7 + C[1,1]
     MOV r2, #0
     LDR r2, [r3],#4
     ADD r7, r7, r2
-    STR r7, [r0,#0]
+    STR r7, [r1,#0]
     @ D[1,1] = r7
 
     @ r8 + C[1,2]
     MOV r2, #0
     LDR r2, [r3],#4
     ADD r8, r8, r2
-    STR r8, [r0,#4]
+    STR r8, [r1,#4]
     @D[1,2] = r8
 
     @ r9 + C[2,1]
     MOV r2, #0
     LDR r2, [r3],#4
     ADD r9, r9, r2
-    STR r9, [r0,#8]
+    STR r9, [r1,#8]
     @ D[2,1] = r9
 
     @ r10 + C[2,2]
     MOV r2, #0
     LDR r2, [r3],#4
     ADD r10, r10, r2
-    STR r10, [r0,#12]
+    STR r10, [r1,#12]
     @ D[2,2] = r10
 
     nop
