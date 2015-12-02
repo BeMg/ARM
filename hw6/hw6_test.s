@@ -5,10 +5,10 @@
     .size Aa, 5
 Aa:
     .word 7
-    .word 5
-    .word 6
-    .word 9
     .word 8
+    .word 9
+    .word 6
+    .word 5
 
 .section .text
 .global main
