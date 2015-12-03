@@ -10,7 +10,12 @@ NumSort:
 
     LDR r5, [ip], #4 /* get array size */
     LDR r6, [ip], #4 /* get array address */
+    LDR r0, [ip], #4
 
+    MOV r9 ,r6
+    MOV r10 , r0
+    LDMIA r9! , {r1-r5}
+    STMIA r10!, {r1-r5}
 /*
 for(int i=0; i<n; i++){
     for(int j=0; j<n-i; j++){
@@ -24,7 +29,7 @@ for(int i=0; i<n; i++){
     MOV r7, r5
 
 LOOPi:
-    MOV r4, r6
+    MOV r4, r0
     SUB r7, r7, #1
     MOV r8, r7
 LOOPj:
@@ -50,7 +55,7 @@ END:
 /*
 */
 FIN:
-    MOV r8, r6
+    MOV r8, r0
     /* function exit */
     LDMEA fp, {r0-r10, fp, sp, pc}
     nop
