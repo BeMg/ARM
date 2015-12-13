@@ -20,7 +20,7 @@ NumSort:
     MOV r6, r1 /* get array address */
 
 
-    /*MOV source array to result array*/
+/*MOV source array to result array*/
     LDR r6, .result
     MOV r7, r6
     MOV r8, #100
