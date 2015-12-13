@@ -19,6 +19,8 @@ NumSort:
     MOV r5, r0 /* get array size */
     MOV r6, r1 /* get array address */
 
+
+    /*MOV source array to result array*/
     LDR r6, .result
     MOV r7, r6
     MOV r8, #100
@@ -29,10 +31,6 @@ LOOP:
     CMP r8, #0
     BNE LOOP
     MOV r6, r7
-
-
-
-
 
 /*
 for(int i=0; i<n; i++){
