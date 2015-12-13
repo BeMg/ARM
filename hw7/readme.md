@@ -11,3 +11,15 @@ extern int NumSort(int,int*)
 ```
 
 參數第一個是 array size 第二個是 array address
+
+回傳的被排序完的 result 陣列
+
+```C
+result = NumSort(size,address);
+```
+
+# 編譯
+
+```shell
+arm-elf-gcc -g call_numsort.c NumSort.s -o call_numsort.exe
+```
