@@ -23,7 +23,7 @@ NumSort:
 /*MOV source array to result array*/
     LDR r6, .result
     MOV r7, r6
-    MOV r8, #100
+    MOV r8, r5
 LOOP:
     LDR r9, [r1], #4
     STR r9, [r6], #4

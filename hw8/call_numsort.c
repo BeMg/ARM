@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 extern int* NumSort(int, int*);
-extern char* FileOutput(char*,int);
+extern char* FileOutput(char*);
 
 int main(){
     int a[10];
@@ -11,6 +11,10 @@ int main(){
     for(i=0,j=9; i<9; i++,j--){
             a[i] = j;
     }
+    a[1] = 1;
+    a[2] = 1;
+    a[5] = 7;
+    a[8] = 2;
     for(i=0; i<9; i++)
         printf("%d%c",a[i],i==8 ? '\n' : ' ');
     result = NumSort(9,a);
@@ -22,7 +26,6 @@ int main(){
         else
             output[cnt++] = ' ';
     }
-    int len = strlen(output);
-    FileOutput(output,len);
+    FileOutput(output);
     return 0;
 }

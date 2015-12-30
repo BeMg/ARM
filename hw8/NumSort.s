@@ -5,16 +5,19 @@
 
 NumSort:
     /* function start */
+
     MOV ip, sp
     STMFD sp!, {r4-r10, fp, ip, lr, pc}
     SUB fp, ip, #4
 
-    MOV r5, r0 /* get array size */
-    MOV r10, r1 /* get array address */
+    @MOV r5, r0 /* get array size */
+    @MOV r10, r1 /* get array address */
 
 
 /*MOV source array to result array*/
+    STMFD sp!, {r0,r1}
     BL malloc
+    LDMFD sp!, {r5,r10}
     MOV r6, r0
     MOV r7, r6
     MOV r8, r5

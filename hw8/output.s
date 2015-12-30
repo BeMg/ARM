@@ -36,17 +36,23 @@ FileOutput:
     STMFD sp!, {r4-r10, fp, ip, lr, pc}
     SUB fp, ip, #4
 
-    MOV r4, r0 /*address of string*/
-    MOV r5, r1 /*length of string*/
+    @MOV r4, r0 /*address of string*/
+	@MOV r7, r4
+
+	STMFD sp!, {r0}
+	bl strlen
+	LDMFD sp!, {r4}
+	MOV r5, r0
 
         /* open a file */
 	MOV r0, #SWI_Open
 	ADR r1, .open_param
 	SWI AngelSWI
-	MOV r2, r0                /* r2 is file descriptor */
+	MOV r2, r0    	         /* r2 is file descriptor */
 
         /* write "Hello ARM" to a file */
 	ADR r1, .write_param
+
 	STR r2, [r1, #0]          /* store file descriptor */
 
 	STR r4, [r1, #4]          /* store the address of string */
