@@ -1,23 +1,28 @@
 #include <stdio.h>
 
+#define MAX 200
+
 int main(){
-    int ans[200]={0};
-    int data[200][200];
+    double ans[MAX]={0};
+    double data[MAX][MAX];
     FILE* pfile =  fopen("data.txt","r");
-    for(int i=0; i<200; i++){
-	for(int j=0; j<200; j++){
-	    fscanf(pfile,"%d",&data[i][j]);	    
+    for(int i=0; i<MAX; i++){
+	for(int j=0; j<MAX; j++){
+	    fscanf(pfile,"%lf",&data[i][j]);	    
 	}
     }
     fclose(pfile);
-    for(int i=0; i<200; i++){
-	for(int j=0; j<200; j++){
-	    ans[i]+=data[i][j];
+    float temp=0;
+    for(int i=0; i<MAX; i++){
+	for(int j=0; j<MAX; j++){
+	    for(int k=0; k<MAX; k++){
+		ans[i]+=data[i][k]*data[j][k];
+	    }
 	}
     }
     FILE* qfile = fopen("output.txt","w");
-    for(int i=0; i<200; i++){
-	fprintf(qfile,"%d\n",ans[i]);
+    for(int i=0; i<MAX; i++){
+	fprintf(qfile,"%lf\n",ans[i]);
     }
     fclose(qfile);
     return 0;

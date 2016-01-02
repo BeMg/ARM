@@ -4,9 +4,14 @@
 
 int main(){
     FILE* fptr = fopen("data.txt","w");
+    int a,b;
+    float c;
     for(int i=0; i<200; i++){
 	for(int j=0; j<200; j++){
-	    fprintf(fptr,"%d%c",rand()%100,j==199 ? '\n' : ' ');
+	    a=rand()%500+1;
+	    b=rand()%51+5;
+	    c=(float)a / (float)b;
+	    fprintf(fptr,"%f%c",c,j==199 ? '\n' : ' ');
 	}
     }
     fclose(fptr);
