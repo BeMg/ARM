@@ -38,6 +38,6 @@ gcc -msse2 hw9simd.c
 printf("%.3lf")
 ```
 
-## CPU
+## 在何種CPU執行成功
 
 intel i5-4200H
