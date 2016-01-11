@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "xmmintrin.h"
-#include "mmintrin.h"
 #include "emmintrin.h"
 
 #define MAX 200
